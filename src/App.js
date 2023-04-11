@@ -12,7 +12,6 @@ function App() {
         <Route path="/missions" element={<missions />} />
         <Route path="/profile" element={<profile />} />
       </Routes>
-      <h1>GROUP</h1>
     </div>
   );
 }
