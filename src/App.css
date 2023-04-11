@@ -55,12 +55,17 @@ li {
 /* rockets */
 
 .rockets{
+  margin: 20px 0 20px 0;
   height: auto;
   width: 100%;
 }
 
 .rocket{
+  width: 90%;
+  margin: 0 5% 20px 5%;
+  height: auto;
   background-color: rgb(219, 190, 190);
   display: flex;
   flex-direction: row;
+  gap: 3%;
 }
