@@ -55,17 +55,34 @@ li {
 /* rockets */
 
 .rockets{
-  margin: 20px 0 20px 0;
+  margin-top: 20px;
   height: auto;
   width: 100%;
+  padding-bottom: 20px;
 }
 
 .rocket{
   width: 90%;
   margin: 0 5% 20px 5%;
   height: auto;
-  background-color: rgb(219, 190, 190);
+  background-color: rgb(160, 158, 158);
   display: flex;
   flex-direction: row;
   gap: 3%;
+  padding: 10px;
+}
+
+.rocketImage{
+  width: 20%;
+  height: auto;
+}
+
+.rocketImage>img{
+  width: 100%;
+  height: 100%;
+}
+
+.aboutR{
+  background-color: white;
+  padding: 20px;
 }
