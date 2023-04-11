@@ -16,6 +16,8 @@ const Rockets = () => {
                     <button type="button">Reserve Rocket</button>
                     <button type="button">Cancel Reservation</button>
                 </div>
+            </div>
+            <div className="rocket">
                 <div className="rocketImage"><img src={rocket2} alt="rocket"></img></div>
                 <div className="aboutR">
                     <h1>Falcon1</h1>
@@ -26,6 +28,8 @@ const Rockets = () => {
                     <button type="button">Reserve Rocket</button>
                     <button type="button">Cancel Reservation</button>
                 </div>
+            </div>
+            <div className="rocket">
                 <div className="rocketImage"><img src={rocket1} alt="rocket"></img></div>
                 <div className="aboutR">
                     <h1>Falcon1</h1>
@@ -40,5 +44,3 @@ const Rockets = () => {
         </div>
     )
 }
-
-export default Rockets
