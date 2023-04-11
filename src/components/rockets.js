@@ -37,7 +37,8 @@ const Rockets = () => {
                     <button type="button">Cancel Reservation</button>
                 </div>
             </div>
-
         </div>
     )
 }
+
+export default Rockets
