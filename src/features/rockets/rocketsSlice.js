@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+// import axios from 'axios';
 // import rocketStore from '../../components/rocketStore';
 
 const url = 'https://api.spacexdata.com/v4/rockets';
@@ -7,7 +7,7 @@ const url = 'https://api.spacexdata.com/v4/rockets';
 export const getRockets = createAsyncThunk('rocket/getRockets',
   async () => {
     try {
-      const resp = await axios.get(url);
+      // const resp = await axios.get(url);
       return resp.data;
     } catch (error) {
       return error;
