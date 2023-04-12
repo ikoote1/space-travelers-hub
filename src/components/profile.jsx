@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
 const Profile = () => {
-  const { rocketStore } = useSelector((state) => state.rocket);
+  const { rocketStore } = useSelector((store) => store.rocket);
   return (
     <div className="container">
       <div className="row">
@@ -26,7 +26,7 @@ const Profile = () => {
                 .filter((rocket) => rocket.reserved)
                 .map((reservedRocket) => (
                   <tr key={reservedRocket.id}>
-                    <th className="mprtd">{reservedRocket.rocket_name}</th>
+                    <th className="mprtd">{reservedRocket.name}</th>
                   </tr>
                 ))}
             </tbody>
