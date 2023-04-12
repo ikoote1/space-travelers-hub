@@ -1,9 +1,12 @@
 import './App.css';
+import Mission from './components/missions';
+import Profile from './components/profile';
 
 function App() {
   return (
     <div className="App">
-      <h1>GROUP</h1>
+      <Mission/>
+      <Profile/>
     </div>
   );
 }
