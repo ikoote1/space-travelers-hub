@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import rocket1 from '../images/rocket1.jpg';
 
-const Rocket = ({id,title,description}) => (
+const Rocket = ({ title, description }) => (
   <div className="rocket">
     <div className="rocketImage"><img src={rocket1} alt="rocket" /></div>
     <div className="aboutR">
@@ -12,5 +13,10 @@ const Rocket = ({id,title,description}) => (
     </div>
   </div>
 );
+
+Rocket.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  };
 
 export default Rocket;
