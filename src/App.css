@@ -1,7 +1,109 @@
+
+.App {
+  width: 100%;
+  height: auto;
+  background-color: rgb(223, 222, 222);
+}
+
+/* navbar */
+.active {
+  color: rgb(10, 45, 133);
+}
+
+li {
+  list-style: none;
+  color: aliceblue;
+}
+
+.navBar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 40%;
+  background-color: rgb(100, 99, 99);
+}
+
+.navLogo {
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  gap: 4%;
+}
+
+.log {
+  width: 14%;
+  height: auto;
+}
+
+.logo {
+  width: 100%;
+}
+
+.links {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 30px;
+}
+
+.bar {
+  padding-top: 10px;
+  border: 1px solid aliceblue;
+  height: 12px;
+}
+
+/* rockets */
+
+.rockets{
+  margin-top: 20px;
+  height: auto;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.rocket{
+  width: 90%;
+  margin: 0 5% 20px 5%;
+  height: auto;
+  background-color: rgb(160, 158, 158);
+  display: flex;
+  flex-direction: row;
+  gap: 2%;
+  padding: 10px;
+}
+
+.rocketImage{
+  width: 20%;
+  max-height: 300px;
+}
+
+.rocketImage>img{
+  width: 100%;
+  height: 100%;
+}
+
+.aboutR{
+  width: 78%;
+  background-color: white;
+  padding: 20px;
+}
+
+.aboutR>button{
+  border-radius: 3px;
+  border-color: white;
+  border: white;
+  background-color: rgb(60, 60, 211);
+  color: white;
+  height: 30px;
+}
+
+p{
+  font-size: 20px;
+}
 .mission-holder{
     margin-top: 3rem;
 }
 .mission-holder button {
    font-size: 12px;
-   padding: 0px 35px;
-}
+   padding: 0
