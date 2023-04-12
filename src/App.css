@@ -2,10 +2,8 @@
 .App {
   width: 100%;
   height: auto;
-  /* background-color: rgb(223, 222, 222); */
 }
 
-/* navbar */
 .active {
   color: rgb(10, 45, 133);
 }
@@ -70,7 +68,7 @@ li {
   display: flex;
   flex-direction: row;
   gap: 2%;
-  padding: 10px;
+  padding: 2px;
 }
 
 .rocketImage{
@@ -89,13 +87,30 @@ li {
   padding: 20px;
 }
 
-.aboutR>button{
+.reserve{
   border-radius: 3px;
   border-color: white;
   border: white;
   background-color: rgb(60, 60, 211);
   color: white;
   height: 30px;
+}
+
+.cancel{
+  border-radius: 3px;
+  border-color: white;
+  border: white;
+  height: 30px;
+}
+
+.cheked{
+  border-radius: 3px;
+  border-color: white;
+  border: white;
+  background-color: rgb(129, 129, 204);
+  font-size: 15px;
+  color: white;
+  height: 20px;
 }
 
 p{

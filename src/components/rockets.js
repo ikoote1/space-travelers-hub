@@ -22,6 +22,8 @@ const Rockets = () => {
       {rocketStore.map((rocket) => (
         <Rocket
           key={rocket.id}
+          id={rocket.id}
+          reserved={rocket.reserved}
           image={rocket.flickr_images}
           name={rocket.name}
           description={rocket.description}
