@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import rocketStore from '../../components/rocketStore';
+// import rocketStore from '../../components/rocketStore';
 
 const url = 'https://api.spacexdata.com/v4/rockets';
 
@@ -18,24 +18,29 @@ const rocketsSlice = createSlice(
   {
     name: 'rocket',
     initialState: {
-      rocketStore,
+      rocketStore: [],
       isLoading: true,
     },
-    extraReducers:(builder) => {
+    extraReducers: (builder) => {
       builder
-      .addCase(getRockets.pending,(state) => {
-        state.isLoading = true;
-      })
-      .addCase(getRockets.fulfilled,(state, action) => {
-        console.log(action);
-        state.isLoading = false;
-        state.rocketStore = action.payload;
-      })
-      .addCase(getRockets.rejected,(state) => {
-        state.isLoading = false;
-      })
-
-    }
+        .addCase(getRockets.pending, (state) => ({
+          ...state,
+          isLoading: true,
+        }))
+        .addCase(getRockets.fulfilled, (state, action) => {
+          console.log(action);
+          return {
+            ...state,
+            isLoading: false,
+            rocketStore: action.payload,
+          };
+        })
+        .addCase(getRockets.rejected, (state) => ({
+          ...state,
+          isLoading: false,
+          error: 'state error',
+        }));
+    },
   },
 );
 
