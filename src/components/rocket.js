@@ -15,8 +15,8 @@ const Rocket = ({ title, description }) => (
 );
 
 Rocket.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  };
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 
 export default Rocket;
