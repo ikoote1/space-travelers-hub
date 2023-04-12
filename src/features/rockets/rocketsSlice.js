@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import rocketStore from '../../components/rocketStore';
+import axios from 'axios';
 
 const url = `https://api.spacexdata.com/v4/rockets`
 
