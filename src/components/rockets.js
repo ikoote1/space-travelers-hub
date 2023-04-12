@@ -6,7 +6,13 @@ const Rockets = () => {
   const { rocketStore } = useSelector((store) => store.rocket);
   return (
     <div className="rockets">
-      {rocketStore.map((rocket) => <Rocket key={rocket.id} {...rocket} />)}
+      {rocketStore.map((rocket) => (
+        <Rocket
+          key={rocket.id}
+          title={rocket.title}
+          description={rocket.description}
+        />
+      ))}
     </div>
   );
 };
