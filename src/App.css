@@ -2,7 +2,7 @@
 .App {
   width: 100%;
   height: auto;
-  background-color: rgb(223, 222, 222);
+  /* background-color: rgb(223, 222, 222); */
 }
 
 /* navbar */
@@ -107,3 +107,4 @@ p{
 .mission-holder button {
    font-size: 12px;
    padding: 0
+}

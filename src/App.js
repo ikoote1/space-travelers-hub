@@ -13,12 +13,9 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<Rockets />} />
-        <Route path="/missions" element={<missions />} />
-        <Route path="/profile" element={<profile />} />
+        <Route path="/missions" element={<Mission />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
-
-      <Mission/>
-      <Profile/>
     </div>
   );
 }
