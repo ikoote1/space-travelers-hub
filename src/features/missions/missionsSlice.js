@@ -1,13 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
-
+import { createSlice } from '@reduxjs/toolkit';
 
 const missionsSlice = createSlice(
-    {
-        name: "missions",
-        initialState: {
-            missionStore: [],
-        },
-    }
-)
+  {
+    name: 'missions',
+    initialState: {
+      missionStore: [],
+    },
+  },
+);
 
-export default missionsSlice.reducer
+export default missionsSlice.reducer;
