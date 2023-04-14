@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
+import { useSelector } from 'react-redux';
 
 const Profile = ({ missionprofile }) => (
+  const { rocketStore } = useSelector((store) => store.rocket);
 
   <div className="container">
     <div className="row">
@@ -21,18 +23,13 @@ const Profile = ({ missionprofile }) => (
         <h2>My Rockets</h2>
         <table className="table table-bordered">
           <tbody>
-            <tr>
-              <th>Falcon 9</th>
-            </tr>
-            <tr>
-              <th>Falcon Heavy</th>
-            </tr>
-            <tr>
-              <th>AsiasSat</th>
-            </tr>
-            <tr>
-              <th>Starship</th>
-            </tr>
+          {rocketStore
+                .filter((rocket) => rocket.reserved)
+                .map((reservedRocket) => (
+                  <tr key={reservedRocket.id}>
+                    <th className="mprtd">{reservedRocket.name}</th>
+                  </tr>
+                ))}
           </tbody>
         </table>
       </div>
