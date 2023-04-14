@@ -6,14 +6,14 @@
 
 /* rockets */
 
-.rockets{
+.rockets {
   margin-top: 20px;
   height: auto;
   width: 100%;
   padding-bottom: 20px;
 }
 
-.rocket{
+.rocket {
   width: 90%;
   margin: 0 5% 20px 5%;
   height: auto;
@@ -24,23 +24,23 @@
   padding: 2px;
 }
 
-.rocketImage{
+.rocketImage {
   width: 20%;
   max-height: 300px;
 }
 
-.rocketImage>img{
+.rocketImage > img {
   width: 100%;
   height: 100%;
 }
 
-.aboutR{
+.aboutR {
   width: 78%;
   background-color: white;
   padding: 20px;
 }
 
-.reserve{
+.reserve {
   border-radius: 3px;
   border-color: white;
   border: white;
@@ -49,14 +49,14 @@
   height: 30px;
 }
 
-.cancel{
+.cancel {
   border-radius: 3px;
   border-color: white;
   border: white;
   height: 30px;
 }
 
-.cheked{
+.cheked {
   border-radius: 3px;
   border-color: white;
   border: white;
@@ -66,9 +66,10 @@
   height: 20px;
 }
 
-p{
+p {
   font-size: 20px;
 }
-.mission-holder{
-    margin-top: 3rem;
+
+.mission-holder {
+  margin-top: 3rem;
 }
