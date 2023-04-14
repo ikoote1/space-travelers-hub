@@ -7,8 +7,11 @@ export const getRockets = createAsyncThunk('rocket/getRockets',
   async () => {
     try {
       const resp = await axios.get(url);
-      console.log(resp.data);
-      return resp.data;
+      const rockets = resp.data.map((rocket) => ({
+        ...rocket,
+        reserved: false,
+      }));
+      return rockets;
     } catch (error) {
       return error;
     }
