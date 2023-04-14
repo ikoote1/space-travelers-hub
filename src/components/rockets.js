@@ -10,13 +10,13 @@ const Rockets = () => {
     dispatch(getRockets());
   }, []);
 
-  const handleReserve = (rocketId) => {
-    dispatch(reserveRockets(rocketId));
-  };
+  // const handleReserve = (rocketId) => {
+  //   dispatch(reserveRockets(rocketId));
+  // };
 
-  const handleCancel = (rocketId) => {
-    dispatch(cancelRockets(rocketId));
-  };
+  // const handleCancel = (rocketId) => {
+  //   dispatch(cancelRockets(rocketId));
+  // };
 
   if (isLoading) {
     return (
@@ -36,14 +36,17 @@ const Rockets = () => {
               {' '}
               {rocket.description}
             </p>
-            { rocket.reserved ? (
-              <button className="cancel" type="button" onClick={() => handleCancel(rocket.id)}>
-                Cancel Reservation
-              </button>
-            ) : (
-              <button className="reserve" type="button" onClick={() => handleReserve(rocket.id)}>
-                Reserve Rocket
-              </button>
+            { rocket.reserved
+            && (
+            <button className="cancel" type="button" onClick={() => dispatch(cancelRockets(rocket.id))}>
+              Cancel Reservation
+            </button>
+            )}
+
+            {!rocket.reserved && (
+            <button className="reserve" type="button" onClick={() => dispatch(reserveRockets(rocket.id))}>
+              Reserve Rocket
+            </button>
             )}
           </div>
         </div>

@@ -22,18 +22,26 @@ const rocketsSlice = createSlice(
       isLoading: true,
     },
     reducers: {
-      reserveRockets: (state, action) => ({
-        ...state,
-        rocketStore: state.rocketStore.map(
-          (rocket) => (rocket.id === action.payload ? { ...rocket, reserved: true } : rocket),
-        ),
-      }),
-      cancelRockets: (state, action) => ({
-        ...state,
-        rocketStore: state.rocketStore.map(
-          (rocket) => (rocket.id === action.payload ? { ...rocket, reserved: false } : rocket),
-        ),
-      }),
+      reserveRockets: (state, action) => {
+        const newrockets = (state.rocketStore.map((rocket) => {
+          if (rocket.id !== action.payload) return rocket;
+          return { ...rocket, reserved: true };
+        }));
+        return ({
+          ...state,
+          rocketStore: newrockets,
+        });
+      },
+      cancelRockets: (state, action) => {
+        const newrockets = (state.rocketStore.map((rocket) => {
+          if (rocket.id !== action.payload) return rocket;
+          return { ...rocket, reserved: false };
+        }));
+        return ({
+          ...state,
+          rocketStore: newrockets,
+        });
+      },
     },
     extraReducers: (builder) => {
       builder
