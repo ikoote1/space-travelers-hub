@@ -1,12 +1,13 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import configureMockStore from 'redux-mock-store';
-import Rockets from '../components/rockets/Rockets';
-import '@testing-library/jest-dom';
-import { reserveRockets, cancelRockets } from '../features/rockets/rocketsSlice';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import Rockets from './Rockets';
+import { getRockets, reserveRockets, cancelRockets } from '../features/rockets/rocketsSlice';
 
-const mockStore = configureMockStore([]);
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
 describe('Rockets component', () => {
   let store;
@@ -16,17 +17,10 @@ describe('Rockets component', () => {
       rocket: {
         rocketStore: [
           {
-            id: 1,
-            name: 'Test Rocket x',
-            description: 'Test Rocket x description',
-            flickr_images: ['#'],
-            reserved: false,
-          },
-          {
-            id: 2,
-            name: 'Test Rocket y',
-            description: 'Test Rocket y description',
-            flickr_images: ['#'],
+            id: '1',
+            name: 'Falcon 1',
+            description: 'Small launch vehicle',
+            flickr_images: ['https://live.staticflickr.com/4043/sets/72157624494458300'],
             reserved: false,
           },
         ],
@@ -35,33 +29,79 @@ describe('Rockets component', () => {
     });
   });
 
-  it('should render the Rockets component', () => {
+  it('should render loading state', () => {
+    store = mockStore({
+      rocket: {
+        rocketStore: [],
+        isLoading: true,
+      },
+    });
+
     render(
       <Provider store={store}>
         <Rockets />
       </Provider>,
     );
 
-    expect(screen.getByText('Test Rocket x')).toBeInTheDocument();
-    expect(screen.getByText('Test Rocket y')).toBeInTheDocument();
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
-  it('should reserve a rocket when Reserve Rocket button is clicked', () => {
+  it('should render no rockets found', () => {
+    store = mockStore({
+      rocket: {
+        rocketStore: [],
+        isLoading: false,
+      },
+    });
+
     render(
       <Provider store={store}>
         <Rockets />
       </Provider>,
     );
 
-    fireEvent.click(screen.getAllByText('Reserve Rocket')[0]);
-
-    const actions = store.getActions();
-    expect(actions[0].type).toEqual('rocket/reserveRockets');
-    expect(actions[0].payload).toEqual(1);
+    expect(screen.getByText('No rockets found')).toBeInTheDocument();
   });
 
-  it('should cancel a reservation when Cancel Reservation button is clicked', () => {
-    store.getState().rocket.rocketStore[0].reserved = true;
+  it('should render rocket list', () => {
+    render(
+      <Provider store={store}>
+        <Rockets />
+      </Provider>,
+    );
+
+    expect(screen.getByText('Falcon 1')).toBeInTheDocument();
+    expect(screen.getByText('Small launch vehicle')).toBeInTheDocument();
+    expect(screen.getByText('Reserve Rocket')).toBeInTheDocument();
+  });
+
+  it('should dispatch reserveRockets action', () => {
+    render(
+      <Provider store={store}>
+        <Rockets />
+      </Provider>,
+    );
+
+    fireEvent.click(screen.getByText('Reserve Rocket'));
+
+    expect(store.getActions()).toContainEqual(reserveRockets('1'));
+  });
+
+  it('should dispatch cancelRockets action', () => {
+    store = mockStore({
+      rocket: {
+        rocketStore: [
+          {
+            id: '1',
+            name: 'Falcon 1',
+            description: 'Small launch vehicle',
+            flickr_images: ['https://live.staticflickr.com/4043/sets/72157624494458300'],
+            reserved: true,
+          },
+        ],
+        isLoading: false,
+      },
+    });
 
     render(
       <Provider store={store}>
@@ -69,10 +109,18 @@ describe('Rockets component', () => {
       </Provider>,
     );
 
-    fireEvent.click(screen.getAllByText('Cancel Reservation')[0]);
+    fireEvent.click(screen.getByText('Cancel Reservation'));
 
-    const actions = store.getActions();
-    expect(actions[0].type).toEqual('rocket/cancelRockets');
-    expect(actions[0].payload).toEqual(1);
+    expect(store.getActions()).toContainEqual(cancelRockets('1'));
+  });
+
+  it('should dispatch getRockets action', () => {
+    render(
+      <Provider store={store}>
+        <Rockets />
+      </Provider>,
+    );
+
+    expect(store.getActions()).toContainEqual(getRockets());
   });
 });

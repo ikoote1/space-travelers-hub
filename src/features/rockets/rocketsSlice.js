@@ -4,7 +4,7 @@ import axios from 'axios';
 const url = 'https://api.spacexdata.com/v4/rockets';
 
 export const getRockets = createAsyncThunk('rocket/getRockets',
-  async () => {
+  async (_, { rejectWithValue }) => {
     try {
       const resp = await axios.get(url);
       const rockets = resp.data.map((rocket) => ({
@@ -13,9 +13,10 @@ export const getRockets = createAsyncThunk('rocket/getRockets',
       }));
       return rockets;
     } catch (error) {
-      return error;
+      return rejectWithValue(error.response.data);
     }
   });
+
 
 const rocketsSlice = createSlice(
   {
