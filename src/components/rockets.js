@@ -7,16 +7,10 @@ const Rockets = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getRockets());
-  }, []);
-
-  // const handleReserve = (rocketId) => {
-  //   dispatch(reserveRockets(rocketId));
-  // };
-
-  // const handleCancel = (rocketId) => {
-  //   dispatch(cancelRockets(rocketId));
-  // };
+    if (!rocketStore.length) {
+      dispatch(getRockets());
+    }
+  }, [dispatch, rocketStore]);
 
   if (isLoading) {
     return (
@@ -30,7 +24,7 @@ const Rockets = () => {
         <div className="rocket" key={rocket.id}>
           <div className="rocketImage"><img src={rocket.flickr_images} alt="rocket" /></div>
           <div className="aboutR">
-            <h1>{rocket.name}</h1>
+            <h1>{rocket.rocket_name}</h1>
             <p className="desc">
               { rocket.reserved && <span className="cheked">Reserved</span>}
               {' '}
