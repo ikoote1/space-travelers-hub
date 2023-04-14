@@ -9,7 +9,7 @@
 
 # 📗 Table of Contents
 
-- [� Table of Contents](#-table-of-contents)
+- [📗 Table of Contents](#-table-of-contents)
 - [📖 \[Space Travelers' Hub\] ](#-space-travelers-hub-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
@@ -126,7 +126,7 @@ You can deploy this project using: Project is incomplete.
 
 - GitHub: [@ikoote1](https://github.com/ikoote1)
 
-👤 **Ismail**
+👤 **Ismail Munyentwari**
 - GitHub: [@ismailmunyentwari9](https://github.com/ismailmunyentwari9)
 
 
