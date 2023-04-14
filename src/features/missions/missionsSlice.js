@@ -1,10 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 
 export const fetchMissions = createAsyncThunk('missions/fetchMissions', async () => {
-  const response = await axios.get('https://api.spacexdata.com/v3/missions');
-  return response.data;
+  const response = await fetch('https://api.spacexdata.com/v3/missions');
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+  return response.json();
 });
 
 const missionsSlice = createSlice({
