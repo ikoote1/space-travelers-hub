@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import Rockets from './Rockets';
+import Rockets from '../components/rockets';
 import { getRockets, reserveRockets, cancelRockets } from '../features/rockets/rocketsSlice';
 
 const middlewares = [thunk];

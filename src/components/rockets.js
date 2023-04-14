@@ -17,7 +17,7 @@ const Rockets = () => {
       <div><h1>Loading...</h1></div>
     );
   }
-  
+
   if (!rocketStore.length) {
     return (
       <div><h1>No rockets found</h1></div>
