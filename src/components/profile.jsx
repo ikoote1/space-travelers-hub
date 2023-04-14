@@ -27,7 +27,7 @@ const Profile = ({ missionprofile }) => {
                 .filter((rocket) => rocket.reserved)
                 .map((reservedRocket) => (
                   <tr key={reservedRocket.id}>
-                    <th className="mprtd">{reservedRocket.rocket_name}</th>
+                    <th className="mprtd">{reservedRocket.name}</th>
                   </tr>
                 ))}
             </tbody>
