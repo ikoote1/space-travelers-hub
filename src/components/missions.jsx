@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMissions } from '../features/missions/missionsSlice';
 
@@ -71,6 +71,12 @@ const Mission = ({ handleJoinMission, handleLeaveMission, joinedMissions }) => {
       </table>
     </div>
   );
+};
+
+Mission.propTypes = {
+  handleJoinMission: PropTypes.func.isRequired,
+  handleLeaveMission: PropTypes.func.isRequired,
+  joinedMissions: PropTypes.func.isRequired,
 };
 
 export default Mission;

@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 export const fetchMissions = createAsyncThunk('missions/fetchMissions', async () => {
@@ -20,18 +19,11 @@ const missionsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMissions.pending, (state) => {
-        state.status = 'loading';
-      })
-      .addCase(fetchMissions.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.missions = action.payload;
-      })
-      .addCase(fetchMissions.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
-      });
+      .addCase(fetchMissions.pending, (state) => ({ ...state, status: 'loading' }))
+      .addCase(fetchMissions.fulfilled, (state, action) => ({ ...state, status: 'succeeded', missions: action.payload }))
+      .addCase(fetchMissions.rejected, (state, action) => ({ ...state, status: 'failed', error: action.error.message }));
   },
+
 });
 
 export default missionsSlice.reducer;

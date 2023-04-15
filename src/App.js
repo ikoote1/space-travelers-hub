@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Navigation from './components/navigation';
