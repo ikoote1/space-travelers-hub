@@ -1,32 +1,45 @@
-const Profile = () => (
-  <div className="container">
-    <div className="row">
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
-      <div className="col-6">
-        <h2>My Mission</h2>
-        <table className="table table-bordered">
-          <tbody>
-            <tr><th>Telstar</th></tr>
-            <tr><th>SES</th></tr>
-            <tr><th>AsiasSat</th></tr>
-            <tr><th>ABS</th></tr>
-          </tbody>
+const Profile = ({ missionprofile }) => {
+  const { rocketStore } = useSelector((store) => store.rocket);
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-6">
+          <h2>My Mission</h2>
+          <table className="table table-bordered">
+            <tbody>
+              {missionprofile.map((missionprofile) => (
+                <tr key={missionprofile}>
+                  <th>{missionprofile}</th>
 
-        </table>
-      </div>
-      <div className="col-6">
-        <h2>My Rockets</h2>
-        <table className="table table-bordered">
-          <tbody>
-            <tr><th>Falcon 9</th></tr>
-            <tr><th>Falcony Heavy</th></tr>
-            <tr><th>AsiasSat</th></tr>
-            <tr><th>Starship</th></tr>
-          </tbody>
-
-        </table>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col-6">
+          <h2>My Rockets</h2>
+          <table className="table table-bordered">
+            <tbody>
+              {rocketStore
+                .filter((rocket) => rocket.reserved)
+                .map((reservedRocket) => (
+                  <tr key={reservedRocket.id}>
+                    <th className="mprtd">{reservedRocket.name}</th>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
+
+Profile.propTypes = {
+  missionprofile: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
 export default Profile;

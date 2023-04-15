@@ -1,52 +1,58 @@
-import React from 'react';
-import rocket1 from '../images/rocket1.jpg';
-import rocket2 from '../images/rocket2.jpg';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getRockets, reserveRockets, cancelRockets } from '../features/rockets/rocketsSlice';
 
-const Rockets = () => (
-  <div className="rockets">
-    <div className="rocket">
-      <div className="rocketImage"><img src={rocket1} alt="rocket" /></div>
-      <div className="aboutR">
-        <h1>Falcon1</h1>
-        <p className="desc">
-          The Rockets section displays a list of all
-          available SpaceX rockets. Users can book each rocket by clicking the reservation
-          button or cancel the previously made booking. The same layout is
-          used to form the Dragons section
-        </p>
-        <button type="button">Reserve Rocket</button>
-        <button type="button">Cancel Reservation</button>
-      </div>
+const Rockets = () => {
+  const { rocketStore, isLoading } = useSelector((store) => store.rocket);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!rocketStore.length) {
+      dispatch(getRockets());
+    }
+  }, [dispatch, rocketStore]);
+
+  if (isLoading) {
+    return (
+      <div><h1>Loading...</h1></div>
+    );
+  }
+
+  if (!rocketStore.length) {
+    return (
+      <div><h1>No rockets found</h1></div>
+    );
+  }
+
+  return (
+    <div className="rockets">
+      {rocketStore.map((rocket) => (
+        <div className="rocket" key={rocket.id}>
+          <div className="rocketImage"><img src={rocket.flickr_images} alt="rocket" /></div>
+          <div className="aboutR">
+            <h1>{rocket.name}</h1>
+            <p className="desc">
+              { rocket.reserved && <span className="cheked">Reserved</span>}
+              {' '}
+              {rocket.description}
+            </p>
+            { rocket.reserved
+            && (
+            <button className="cancel" type="button" onClick={() => dispatch(cancelRockets(rocket.id))}>
+              Cancel Reservation
+            </button>
+            )}
+
+            {!rocket.reserved && (
+            <button className="reserve" type="button" onClick={() => dispatch(reserveRockets(rocket.id))}>
+              Reserve Rocket
+            </button>
+            )}
+          </div>
+        </div>
+      ))}
     </div>
-    <div className="rocket">
-      <div className="rocketImage"><img src={rocket2} alt="rocket" /></div>
-      <div className="aboutR">
-        <h1>Falcon1</h1>
-        <p className="desc">
-          The Rockets section displays a list of all
-          available SpaceX rockets. Users can book each rocket by clicking the reservation
-          button or cancel the previously made booking. The same layout is
-          used to form the Dragons section
-        </p>
-        <button type="button">Reserve Rocket</button>
-        <button type="button">Cancel Reservation</button>
-      </div>
-    </div>
-    <div className="rocket">
-      <div className="rocketImage"><img src={rocket1} alt="rocket" /></div>
-      <div className="aboutR">
-        <h1>Falcon1</h1>
-        <p className="desc">
-          The Rockets section displays a list of all
-          available SpaceX rockets. Users can book each rocket by clicking the reservation
-          button or cancel the previously made booking. The same layout is
-          used to form the Dragons section
-        </p>
-        <button type="button">Reserve Rocket</button>
-        <button type="button">Cancel Reservation</button>
-      </div>
-    </div>
-  </div>
-);
+  );
+};
 
 export default Rockets;
